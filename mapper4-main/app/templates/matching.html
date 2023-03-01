@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Matching
+</title>
+<style>
+    /* table, th, td {
+      border:1px solid black;
+      text-align: center;
+    } */
+    table
+{
+  position:absolute;
+  top: 3.5cm;
+  right: 2.5cm; 
+  text-align: center;
+}
+    
+.centerv {
+  text-align: center;
+  color: rgb(153, 41, 41);
+}
+.left {
+  text-align: left;
+}
+.center {
+  color: green;
+  text-align: center;
+  position:absolute;
+  top: 2cm;
+  right: 8.5cm;
+}
+.centerf {
+  color: red;
+  text-align: center;
+  position:absolute;
+  top: 2cm;
+  right: 3.6cm;
+}
+.centers {
+  color: green;
+  text-align: center;
+  position:absolute;
+  top: 3cm;
+  right: 6cm;
+}
+h1 {
+  font-size: 30px;
+}
+h2 {
+  font-size: 30px;
+}
+.centert {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+</head>
+<body>  
+<h1 class=" centerv">Matching</h1>
+<form name ="map" action="." method ="post"> 
+  <label for="browser">Enter/Select name</label>
+  <input type="text" list="browsers" name="inputtext" id="browser">
+  <datalist id="browsers">
+    {% if itext %}
+    {% for j in names %}
+    <option value={{j}}>
+    {% endfor %}
+    {% endif %}
+    {% if itext == NULL %}
+    {% for j in names %}
+    <option value={{j}}>
+    {% endfor %}
+    {% endif %}
+  </datalist>
+    <br>
+    <h3>Select method for matching</h3>
+    <input type="radio" id="m0" name="tree" value="m0" checked>
+    <label for="acm">m0</label><br>
+    <input type="radio" id="m1" name="tree" value="m1">
+    <label for="jel">m1</label>
+    <br><br>
+    <input type="submit" value="Find matching proposals"> 
+    </form>
+    <script>
+     function getVal() {
+  const val = document.querySelector('input').value;
+  console.log(val);
+}
+    </script>
+    {% if name %}
+    <h3 class = center>Name - {{name}}</h3>
+    <br>
+     <table border="1" 
+            align="right"> 
+      <tr>
+      
+        <th><h3># of Proposals</h3></th>
+        <th><h3>Proposal ID</h3></th>
+        <th><h3>Details</h3></th>
+      </tr>
+          
+        <tr>
+         
+          <td><h3>{{length}}</h3></td> 
+          
+          <td>
+            
+            {% for j in nsfids %} 
+           
+            <h3 class = "left">{{j}}</h3>
+          
+            
+            {% endfor %}
+          </td>
+
+          <td style>
+          
+            {% for j in range %} 
+            
+            <h3 class = "left"><a href={{nsflinks[j]}} target="_blank">{{nsftitles[j]}}</a> ({{years[j]}})</h3>
+            
+            {% endfor %}
+            
+          </td>
+        </tr>
+           
+      
+      
+      </table>
+      {% endif %}
+
+
+</body>
+</html>
